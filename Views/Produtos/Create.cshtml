@@ -1,0 +1,47 @@
+﻿@model ParcialAncelmo.Models.Produto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar um tipo de conteúdo</h1>
+
+<h4>Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="descricao" class="control-label">Descrição do produto</label>
+                <input asp-for="descricao" class="form-control" />
+                <span asp-validation-for="descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="valor" class="control-label">Valor do produto</label>
+                <input asp-for="valor" class="form-control" />
+                <span asp-validation-for="valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipo" class="control-label">Tipo do produto</label>
+                <input asp-for="tipo" class="form-control" />
+                <span asp-validation-for="tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idCliente" class="control-label">Dono do produto</label>
+                <select asp-for="idCliente" class ="form-control" asp-items="ViewBag.idCliente"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar produto" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar aos classificados</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

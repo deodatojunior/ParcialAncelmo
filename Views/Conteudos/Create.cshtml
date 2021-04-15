@@ -1,0 +1,44 @@
+﻿@model ParcialAncelmo.Models.Conteudo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar notícia</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="texto" class="control-label">Notícia redigida</label>
+                <input asp-for="texto" class="form-control" />
+                <span asp-validation-for="texto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="link" class="control-label">Link da notícia</label>
+                <input asp-for="link" class="form-control" />
+                <span asp-validation-for="link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idTipoConteudo" class="control-label">Tipo de conteúdo da noticia</label>
+                <select asp-for="idTipoConteudo" class ="form-control" asp-items="ViewBag.idTipoConteudo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="idAutor" class="control-label">Autor da notícia</label>
+                <select asp-for="idAutor" class ="form-control" asp-items="ViewBag.idAutor"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar notícia" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

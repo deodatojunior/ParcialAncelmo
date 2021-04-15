@@ -1,0 +1,54 @@
+﻿@model ParcialAncelmo.Models.Conteudo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar notícia</h1>
+
+<h4>Conteudo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="dataDeCadastro" class="control-label">Data de cadastro da notícia</label>
+                <input asp-for="dataDeCadastro" class="form-control" />
+                <span asp-validation-for="dataDeCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="texto" class="control-label">Notícia redigida</label>
+                <input asp-for="texto" class="form-control" />
+                <span asp-validation-for="texto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="link" class="control-label">Link da notícia</label>
+                <input asp-for="link" class="form-control" />
+                <span asp-validation-for="link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idTipoConteudo" class="control-label">Tipo de conteúdo da noticia</label>
+                <select asp-for="idTipoConteudo" class="form-control" asp-items="ViewBag.idTipoConteudo"></select>
+                <span asp-validation-for="idTipoConteudo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idAutor" class="control-label">Nome do autor da notícia</label>
+                <select asp-for="idAutor" class="form-control" asp-items="ViewBag.idAutor"></select>
+                <span asp-validation-for="idAutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Editar notícia" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar a listagem de notícias</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

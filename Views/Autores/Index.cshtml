@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ParcialAncelmo.Models.Autor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Administração de autores</h1>
+
+<p>
+    <a asp-action="Create">Criar novo autor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.linkedin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.linkedin)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar autor</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhar autor</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Remover autor</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

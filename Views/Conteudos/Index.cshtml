@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ParcialAncelmo.Models.Conteudo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Página principal</h1>
+
+<p>
+    <a asp-action="Create">Criar nova notícia</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dataDeCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.texto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoConteudo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.autor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataDeCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.texto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoConteudo.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.autor.id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar notícia</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhar notícia</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Remover notícia</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
